@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Edit a Blog</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<!-- Latest compiled and minified CSS -->
+<div th:replace="/fragments/styling :: head-style" ></div>
+<div th:replace="/fragments/styling :: body-links" ></div>
+
+</head>
+<body>
+
+	<div th:replace="fragments/navbar :: navbar"></div>
+
+	<div class="container">
+		<h1>Edit Your Blog Post</h1>
+		<form th:action="@{'/blogpost/{id}' (id=${id})}" th:object="${posts}" th:method="put">
+
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Blog Title..."
+					th:field="*{title}" />
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control"
+					placeholder="Your Name Here..." th:field="*{author}" />
+			</div>
+
+			<div class="form-group">
+				<input type="text" class="form-control" placeholder="Blog Entry"
+					th:field="*{blogEntry}" />
+			</div>
+
+			<button type="submit" class="btn btn-primary">Submit Your
+				Post</button>
+		</form>
+	</div>
+	<script src="../../webjars/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="../../webjars/jquery/1.9.1/jquery.min.js"></script>
+</body>
+</html>
